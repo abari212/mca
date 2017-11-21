@@ -26,3 +26,14 @@ foreach(i = 1:3, .combine=c, .packages="dplyr") %dopar% {
   iris_data[i, ] %>% select(-Species) %>% sum
 }
 stopCluster(cl)
+
+# There is alos another parallel processing code using the foreach package:
+
+library(doParallel)
+cl <- makeCluster(detectCores()-1)
+registerDoParallel(cl)
+foreach(i = 1:3, .combine=c) %dopar% {
+  i**2
+}
+
+stopCluster(cl)
