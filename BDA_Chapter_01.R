@@ -1,3 +1,4 @@
+This part of a series of scripts 
 chapter 01
 setwd()
 getwd()
