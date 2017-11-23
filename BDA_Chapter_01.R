@@ -1,5 +1,5 @@
-This part of a series of scripts 
-chapter 01
+# This part of a series of script 
+# Chapter 01
 setwd()
 getwd()
 # Reading and conveting files (HTML) to R Data Frame format
