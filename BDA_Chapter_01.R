@@ -1,5 +1,9 @@
-# This part of a series of script 
-# Chapter 01
+# This is part of a series of scripts to use R and Spark combined  
+# Chapter 01 - To get acquainted with R and Spark pltaform 
+# Use the case of extracting and transforming HTML data into a table or data frame
+# Stock market data - Apple stock market trends 
+
+# Strating by setting a working directory 
 setwd()
 getwd()
 # Reading and conveting files (HTML) to R Data Frame format
