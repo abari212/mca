@@ -1,5 +1,5 @@
 # This is part of a series of scripts to use R and Spark combined  
-# Chapter 01 - To get acquainted with R and Spark pltaform 
+# Chapter 01 - To get acquainted with R and Spark platform (magic platform) 
 # Use the case of extracting and transforming HTML data into a table or data frame
 # Stock market data - Apple stock market trends 
 
