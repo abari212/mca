@@ -1,25 +1,26 @@
+# This chapter 5 is linked to lecture 5 on Big Data 
+# iT consits of different types of data (including sensor data), different types of ML and platforms (R and Spark) 
 # Setting up working directory using setwd()
 setwd("C:/MCA2017") 
 
-# Libraries -  
-# Using dplyr as a number useful resource for data cleaning and data manipulation.
+# Libraries to prepare and analyse data 
+# dplyr libaray used as a number useful resource for data cleaning and data manipulation.
 # dplyr has a number of verbs that can be used to prepare data within the cluster.
-# Start by copying some datasets from R into the Spark cluster 
-# For this install the nycflights13 and fda packages 
+# datasets can be connected from R into the Spark cluster 
+# For this install the nycflights13 and fda (functional data) packages 
 library(dplyr)
 
-# Data manipulation tasks in dplyr can be performed with the assistance of the forward-pipe operator (%>%). 
-# Example creating an ID variable to be used as the primary key
+# Data manipulation tasks under dplyr can be performed with the assistance of the forward-pipe operator (%>%). 
+# Example of using forward-pipe operator (%>%) to create an ID variable to be used as the primary key
 df <- df %>%
   mutate(ID = seq(1:nrow(df))) %>%
   select(ID, everything())
 
-# Merging table 2 with to table 1 either left or right 
+# Example of using forward-pipe operator (%>%) to merge tables - table 2 with to table 1 either left or right 
 left_join(table_1, table_2, by = "ID")
 right_join(table_1, table_2, by = "ID")
 
 
-  
 # Data loading and connecting - install.packages(c("nycflights13", "fda"))
 library(nycflights13)
 library(fda)
@@ -51,13 +52,13 @@ head(iris_data, 3)
 head(flights_data, 3)
 head(climate_data, 3)
 
-iris_data[1:3, 1:5]
+iris_data[1:3, 1:5] # display first 3 rows and first 5 columns
 flights_data[1:3, 1:5]
 climate_data[1:3, 1:5]
 names(climate_data)
-length(climate_data$coordinates)
+length(climate_data$coordinates)  # display the number of rows
 
-str(climate_data$dailyAv)
+str(climate_data$dailyAv) # display the structure (rows and variables) 
 str(climate_data$coordinates)
 
 dimnames(climate_data$dailyAv)[[1]]
@@ -88,14 +89,14 @@ axis(2)
 with(climate_data, points(-coordinates[, 2], coordinates[, 1],
                              col="blue", pch='*' ))
 
-# Adding a map countour to the plotted (geo/gps) coordinates (dataset)
+# Adding a map countour to the plotted (geo/gps) coordinates (dataset) to locate the points geeographically 
 
 library(maps)
 map("world", boundary = FALSE, col="gray", add = TRUE)
 map("world", add = TRUE)
 map("world", boundary = FALSE, col="gray", add = TRUE)
 
-# Display of data for a station representing each of Canada 4 regions  
+# Display data for a station representing each of Canada 4 regions  
 matplot(day.5, climate_data$dailyAv[, stations, "Temperature.C"],
         type="l", axes=FALSE, xlab="", ylab="Mean Temperature (deg C)")
 axis(2, las=1)
@@ -111,8 +112,8 @@ mtext(stations, side=4,
 
 
 ####
-# Climate data is a functional data with observation that are function rather than single records
-# For this type of data, functions are considered as the sum of functions, knwon as basis functions
+# Climate data is a functional data with observations that are functions rather than single records
+# For this type of data, functions are considered as the sum of functions, with basis functions
 # To create the basis function for dailyAv, fourier could be used as follows:
 daybasis65 <- create.fourier.basis(c(0, 365), 65)
 daytempfd <- with(climate_data, smooth.basis(
@@ -130,10 +131,9 @@ axis(2)
 
 
 ##############
-# dplyr filtering procedure
+# dplyr data manipultaion - filtering procedure
 # Filight data can be filtered by departure delay
 flights_data %>% filter(dep_delay == 2)
-
 
 delay <- flights_data %>% 
   group_by(tailnum) %>%
@@ -275,25 +275,6 @@ kable(tail(iris_data, 3))
 # Random Sampling of data sets to a Train and Test set for prediction
 # Data will be split into random samples with either 70/30  of 50/50 ratios for fitst training to develop the model and a Test set to validate or carry oout the model's predction (unknon set).
 
-# Model Selection and Development
-# The most important thing in developing model is to select right modeling machine learning algorithms 
-# Logistic Regression model
-# Known also as logit model, whic is a regression model where the dependent or response variable is categorical. 
-# Recursive partitioning for classification
-# Recursive partitioning is a multivariable analysis method, which creates a decision tree that split data it into sub-populations 
-
-# Random Forest
-# Random forest is an ensemble learning method as it is base on a multitude of decision trees above.
-
-# Support Vector Machine (SVM)
-# A Support Vector Machine (SVM) performs classification by constructing an N-dimensional hyperplane that optimally separates the data into two categories. The SVM models are closely related to neural networks 
-
-# Neural Network Modeling
-# Normally doesn't fit well with low number of observationsFor Neural network we need numeric data to model.
-
-# Machine Learning
-# Machine learning algorithms can be performed in a Spark cluster via the machine learning functions using sparklyr. These functions connect to a set of high-level APIs built on top of DataFrames to create and tune machine learning workflows.
-
 # ML linear regression model can be used for predictionn such as predicting a car's fuel consumption (mpg) based on its weight (wt), and the number of cylinders the engine contains (cyl). 
 # In this cas the relationship between mpg and each of our features is asuumed to be of linear nature.
 
@@ -362,6 +343,8 @@ data.test$predictions <- with(data.test, predict(MLmodel.logit, data.test))
 data.test$labels <- with(data.test$test, data.test$Y)
 
 # ===
+# Logistic Regression model
+# Known also as logit model, which is a regression model where the dependent or response variable is categorical. 
 MLmodel.logit.frame <- data.frame(cbind(data.test$predictions, data.test$labels))
 # View(MLmodel.logit.frame)
 names(MLmodel.logit.frame)
@@ -486,8 +469,10 @@ colfill<-c(2:(2+length(levels(Presence.f))))
 legend(locator(1), levels(Presence.f), fill=colfill) 
 
 ###
-# Exploring different ML using iris data
-# Machine Learning Models Accuracy 
+# Exploring different ML using iris data - Machine Learning Models Accuracy - # Model Selection and Development
+# The most important thing in developing model is to select right modeling machine learning algorithms 
+# Machine learning algorithms can be performed in a Spark cluster via the machine learning functions using sparklyr. These functions connect to a set of high-level APIs built on top of DataFrames to create and tune machine learning workflows.
+
 set.seed(123)
 
 # Data Exploration
@@ -496,7 +481,6 @@ summary(iris_data)
 
 
 # Multinomial linear ML
-
 library(nnet)
 library(caret)
 
@@ -535,6 +519,9 @@ mtab<-table(factor(pred,l),factor(Y,l))
 confusionMatrix(mtab)
 
 # Non-Linear ML - Neural Networ
+# Neural Network Modeling
+# Normally doesn't fit well with low number of observationsFor Neural network we need numeric data to model.
+
 library(nnet)
 library(devtools)
 model<-nnet(formula_YX,data=iris_data,size = 3, decay = 0.0001, maxit = 500, trace = FALSE)
@@ -544,7 +531,8 @@ l<-union(pred,Y)
 mtab<-table(factor(pred,l),factor(Y,l))
 confusionMatrix(mtab)
 
-
+# Support Vector Machine (SVM)
+# A Support Vector Machine (SVM) performs classification by constructing an N-dimensional hyperplane that optimally separates the data into two categories. The SVM models are closely related to neural networks 
 # ML Support Vector Machine
 library(kernlab) 
 model<-ksvm(formula_YX,data=iris_data) 
@@ -572,6 +560,8 @@ mtab<-table(factor(pred,l),factor(Y,l))
 confusionMatrix(mtab)
 
 
+# Recursive partitioning for classification
+# Recursive partitioning is a multivariable analysis method, which creates a decision tree that split data it into sub-populations 
 # Non-Linear Classification with Decision Trees
 library(rpart) 
 library(rpart.plot)
@@ -582,6 +572,8 @@ mtab<-table(factor(pred,l),factor(Y,l))
 confusionMatrix(mtab)
 
 
+# Random Forest
+# Random forest is an ensemble learning method as it is base on a multitude of decision trees above.
 # ML Random Forest
 library(randomForest) 
 model<-randomForest(formula_YX,data=iris_data) 
