@@ -504,7 +504,7 @@ confusionMatrix(mtab)
 # Non-Linear ML Classification - Mixture Discriminant Analysis
 library(mda) 
 model<-mda(formula_YX,data=iris_data) 
-pred<-predict(model,x) 
+pred<-predict(model,X) 
 l<-union(pred,Y)
 mtab<-table(factor(pred,l),factor(Y,l))
 confusionMatrix(mtab)
@@ -513,7 +513,7 @@ confusionMatrix(mtab)
 # Non-Linear ML - Regularized Discriminant Analysis
 library(klaR) 
 model<-rda(formula_YX,data=iris_data,gamma = 0.05,lambda = 0.01) 
-pred<-predict(model,x)$class 
+pred<-predict(model,X)$class 
 l<-union(pred,Y)
 mtab<-table(factor(pred,l),factor(Y,l))
 confusionMatrix(mtab)
