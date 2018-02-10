@@ -1,12 +1,12 @@
 # This is part of a series of scripts to use R and Spark platforms combined to scale data processing and analytics 
 # Chapter 01 - To get acquainted with R and Spark platform (magic platform) 
-# Use the case of extracting and transforming HTML data into a table or data frame
-# Stock market data - Apple stock market trends 
+# Use the case of extracting and transforming HTML data into a table or a data frame
+# Stock market data - Apple stock market trends case 
 # Starting by Setting up the working platforms (R and Spark)
-# Start by installing R followed R Studio
+# Start by installing R followed by R Studio
 
-# R is available to download and install and run on Windows, OS X and “a wide variety of Unix platforms. 
-# The primary part or R language is available from its Comprehensive R Archive Network (CRAN). Many add-on packages used to extend the functionality of R language are also hosted in the CRAN.
+# R is available to download and install and run on Windows, OS X and a wide variety of Unix platforms. 
+# The primary part of R language is available from its Comprehensive R Archive Network (CRAN). Many add-on packages used to extend the functionality of R language are also hosted in the CRAN.
 
 # Download R from the site http://cran.us.r-project.org/.
 # Click on Base to download R 
@@ -20,13 +20,14 @@ setwd()
 getwd()
 
 # Setting up data working directory 
-# It is always handy to set up a working directory (wd) prior to data analysis 
+# It is always handy to set up a working directory (wd) prior to data integration, preparation and analysis 
 
 setwd("~/mydirectory") 
 
 # Use the command-line scripting and editing at the top left window of RStudio, which is 
 # the console where command-line scripting and editing space to create a file with multiple lines of R code
-# Installing packages under RStudio by typing : install.packages(package-name) # Rstudio tab  
+# Installing packages under RStudio by typing : install.packages(package-name) # Rstudio tab
+
 # Spark can be installed via Rstudio using sparklyr.
 install.packages(sparklyr)
 # To run the package - library(package-namE) 
@@ -66,8 +67,9 @@ str(stock.trend.df)
 head(stock.trend.df)
 names(stock.trend.df)
 
-# convert data to numeric values
-# Date conversion in R 
+# Convert data to numeric values
+
+# Date conversion in R using different codes below
 # Code	Value
 # %d	Day of the month (decimal number)
 # %m	Month (decimal number)
