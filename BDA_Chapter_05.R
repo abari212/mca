@@ -1,10 +1,10 @@
-# This chapter 5 is linked to lecture 5 on Big Data 
-# iT consits of different types of data (including sensor data), different types of ML and platforms (R and Spark) 
-# Setting up working directory using setwd()
+# This is linked to lecture 5 on Big Data 
+# It consits of different types of data (including sensor data), different types of ML and platforms (R and Spark) 
+# Starting by setting up first a working directory using setwd()
 setwd("C:/MCA2017") 
 
-# Libraries to prepare and analyse data 
-# dplyr libaray used as a number useful resource for data cleaning and data manipulation.
+# Libraries to prepare and analyse data strating by dplyr 
+# dplyr libaray uses as a number useful resource for data cleaning and data manipulation.
 # dplyr has a number of verbs that can be used to prepare data within the cluster.
 # datasets can be connected from R into the Spark cluster 
 # For this install the nycflights13 and fda (functional data) packages 
