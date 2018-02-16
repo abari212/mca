@@ -92,7 +92,7 @@ lines(stock.trend.df$Date, stock.trend.df$High , col='blue')
 lines(stock.trend.df$Date, stock.trend.df$Low, col='green')
 lines(stock.trend.df$Date, stock.trend.df$Adj.Close.., col='red')
 
-# Save extractd html data as data frame  
+# Save extracted html data as data frame CSV and TXT 
 write.csv(stock.trend.df,'stock.trend.df.csv')
 write.table(stock.trend.df, "stock.trend.df.txt", sep="\t")
 
