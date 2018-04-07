@@ -1,7 +1,7 @@
 # This is part of a series of scripts to use R and Spark platforms combined to scale data processing and analytics 
-# Chapter 01 - To get acquainted with R and Spark platform (magic platform) 
-# Use the case of extracting and transforming HTML data into a table or a data frame
-# Stock market data - Apple stock market trends case 
+# Chapter 01 helps to get acquainted with R and Spark platforms (magic platform) 
+# Through the use the case of extracting and transforming HTML data into a table or a data frame
+# Using as an example the stock market data - Apple stock market trends case 
 # Starting by Setting up the working platforms (R and Spark)
 # Start by installing R followed by R Studio
 
