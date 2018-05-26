@@ -3,9 +3,9 @@
 # Starting by setting up first a working directory using setwd()
 setwd("C:/MCA2017") 
 
-# Libraries to prepare and analyse data strating by dplyr 
-# dplyr libaray uses as a number useful resource for data cleaning and data manipulation.
-# dplyr has a number of verbs that can be used to prepare data within the cluster.
+# Libraries to prepare and analyse data strating by dplyr comprehensive package 
+# dplyr libaray uses a number of useful resources for data cleaning and data manipulation.
+# dplyr has a number of "verbs" that can be used to prepare data within of a cluster of connected computers working together.
 # datasets can be connected from R into the Spark cluster 
 # For this install the nycflights13 and fda (functional data) packages 
 library(dplyr)
