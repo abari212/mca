@@ -1,9 +1,8 @@
-# H2O ML Deep Learning
-
+# H2O ML Deep Learning 
 # Parallel Distributed ML Algorithm with R and H2O, which is an open source math engine for Big Data that can be used to compute parallel distributed machine learning algorithms. 
 
 # Download H2O directly at http://h2o.ai/download.
-# Install H2O’s R package from CRAN at https://cran.r-project.org/web/packages/h2o/.
+# Install H2Oâ€™s R package from CRAN at https://cran.r-project.org/web/packages/h2o/.
 # install.packages("h2o")
 
 # run h2o
@@ -119,7 +118,7 @@ iris.test <- iris.split[[2]]
 gbm.model <- h2o.getModel(model_id = "GBM_8e4591a9b413407b983d73fbd9eb44cf")
 
 # Listing H2O Objects by generating a list of all H2O objects generated during a session and each
-object‘s size in bytes.
+objectâ€˜s size in bytes.
 h2o.ls()
 
 
