@@ -1,26 +1,29 @@
 ###########################################################
 # Reinforcement Learning - RL
-# Reference: Nicolas Prˆllochs & Stefan Feuerriegel (2017)
+# Reference can also be made to Nicolas Pr√∂llochs & Stefan Feuerriegel (2017)
 #######################
 
 # Reinforcement Learning - RL
-# Under RL algorithm, the machine is exposed to an environment (env_sa) where it trains itself   based on using trial and error.. RL learns by taking actions (a) under continuous changing conditions or states (s). It is trained thus to learn from past experience and tries to capture the best possible knowledge to make accurate decisions. 
+# Under RL algorithm, the machine is exposed to an environment (env_sa) where it trains itself based on trial and error as a result of the interation state/action. 
+# RL learns by taking actions (a) under continuously changing states (s). It is trained to learn from past experience and tries to capture the best possible knowledge to make accurate decisions. 
+# Example of RL algorithms is Markov Decision Process (MDP). There is a package for applying MDP. Other algorithms and packages are also under development such as  the ‚ÄúReinforcementLearning‚Äù package, which is intended to partially close this gap and offers the ability to perform model-free reinforcement learning in a highly customizable framework .
 
-# Example of RL algorithms is Markov Decision Process (MDP). There is a package for applying MDP. Other algorithms and packages are also under development such as  the ìReinforcementLearningî package, which is intended to partially close this gap and offers the ability to perform model-free reinforcement learning in a highly customizable framework .
+# Installation or RL related platforms
 
-# Installation or RL related platforms 
-# Using the devtools package, one can easily install the latest development version of ReinforcementLearning as follows.
-# install.packages("devtools")
-# Option 1: download and install latest version from GitHub
+# Using the devtools package helps to easily install the latest development version of ReinforcementLearning as follows.
+# Download and install latest version from GitHub
 # devtools::install_github("nproellochs/ReinforcementLearning")
+# Other option is install.packages("devtools")
+install.packages("devtools")
 
 # Package loading
 library(ReinforcementLearning)
-# Usage
 # The following sections present the usage and main functionality of the ReinforcementLearning package.
 
 # Data format
-# The ReinforcementLearning package uses experience replay to learn an optimal policy based on past experience in the form of sample sequences consisting of states, actions and rewards. Here each training example consists of a state transition tuple (s,a,r,s_new), as described below.
+# The ReinforcementLearning package uses experience replay to learn an optimal policy based on past experience 
+# in the form of sample sequences consisting of states, actions and rewards. Here each training example consists of 
+# a state transition tuple (s,a,r,s_new), as described below.
 
 # s The current environment state.
 # a The selected action in the current state.
@@ -31,14 +34,14 @@ library(ReinforcementLearning)
 # Experience sampling using an environment function
 # The ReinforcementLearning package consist of built-in RL capabilities such as sampling experience from a function that defines the dynamics of the environment. 
 # These dynamics of the environment may be known in advance (a priori), in this case arbitrary complex environment function can be created in R and sample state transition tuples. 
-This function can thus be manually implemented with defined state (s) and an action (a) as input. The output or return value needs also to contain the name of the next state and the reward (r). 
-This procedure of experience sampling allows to validate the performance of RL, by applying the learned policy (pi) to newly generated dataset.
+# This function can thus be manually implemented with defined state (s) and an action (a) as input. The output or return value needs also to contain the name of the next state and the reward (r). 
+# This procedure of experience sampling allows to validate the performance of RL, by applying the learned policy (pi) to newly generated dataset.
 
-environment <- function(state, action) {
-  ...
-  return(list("NextState" = newState,
-              "Reward" = reward))
-}
+# environment <- function(state, action) {
+#  ...
+#  return(list("NextState" = newState,
+#               "Reward" = reward))
+# }
 # To illustrate this process using an environment function, below an agent that navigates from a random starting position clock-wise to a goal position on a simulated 2x2 grid.
 # The illustration is a grid with 4 states where the  process moves from s1 to S4 clock-wise: 
 
@@ -48,17 +51,17 @@ environment <- function(state, action) {
 # | s3 | s2 |
 # |----|----|
 
-# Each cell on the grid represents one state, which yields a total of 4 states. It is assumed that the agent cannot move off the grid. In addition, the agent faces an obstruction and canít move directly from s1 to s4. 
-At each state, the agent randomly chooses one out of four possible actions, i. e. to move up, down, left, or right. 
-To consider the obstruction the agent encounters the following reward structure. When crossing each square on the grid leads to a reward of -1. However, if the agent reaches the goal position, it will earn a reward of 10.
+# Each cell on the grid represents one state, which yields a total of 4 states. It is assumed that the agent cannot move off the grid. In addition, the agent faces an obstruction and can‚Äôt move directly from s1 to s4. 
+# At each state, the agent randomly chooses one out of four possible actions, i. e. to move up, down, left, or right. 
+# To consider the obstruction the agent encounters the following reward structure. When crossing each square on the grid leads to a reward of -1. However, if the agent reaches the goal position, it will earn a reward of 10.
 
 # To create the above environment for this envisaged grid with obstruction: 
 
-environment_sa <- function(state, action) {
-  ...
-  return(list("NextState" = newState,
-              "Reward" = reward))
-}
+# environment_sa <- function(state, action) {
+#  ...
+#  return(list("NextState" = newState,
+#              "Reward" = reward))
+# }
 
 # Define state and action sets
 states <- c("s1", "s2", "s3", "s4")
@@ -97,8 +100,8 @@ sa_data <- sampleExperience(N = 1000, env = envt_sa, states = states, actions = 
 head(sa_data)
 
 # Performing reinforcement learning
-# The following example shows how to teach a reinforcement learning agent using input data(s,a), in the form of sample sequences consisting of states, actions and rewards. The ëdataí argument must be a dataframe object (sa_data) in which each row represents a state transition tuple (s,a,r,s_new). 
-# It is required to specify the column names of the individual tuple elements in ësa_dataí.
+# The following example shows how to teach a reinforcement learning agent using input data(s,a), in the form of sample sequences consisting of states, actions and rewards. The ‚Äòdata‚Äô argument must be a dataframe object (sa_data) in which each row represents a state transition tuple (s,a,r,s_new). 
+# It is required to specify the column names of the individual tuple elements in ‚Äòsa_data‚Äô.
 
 # Define reinforcement learning parameters
 control <- list(alpha = 0.1, gamma = 0.5, epsilon = 0.1)
@@ -117,9 +120,9 @@ policy(model)
 # Updating an existing policy
 # Specifying an environment function to model the dynamics of the environment helps to validate the performance of the agent. The validation procedure involves as per previous models to apply the learned policy to newly generated dataset. 
 
-The ReinforcementLearning package has additional predefined action selection mode, namely ëepsilon-greedyí to carry out the validation where the agent explores the environment by selecting an action at random with probability.
+The ReinforcementLearning package has additional predefined action selection mode, namely ‚Äòepsilon-greedy‚Äô to carry out the validation where the agent explores the environment by selecting an action at random with probability.
 
-# The following example shows how to sample new experience from an existing policy using ëepsilon-greedyí action selection. The result is new state transition samples (ëdata_newí) with significantly higher rewards compared to the original sample (ësa_dataí).
+# The following example shows how to sample new experience from an existing policy using ‚Äòepsilon-greedy‚Äô action selection. The result is new state transition samples (‚Äòdata_new‚Äô) with significantly higher rewards compared to the original sample (‚Äòsa_data‚Äô).
 # Define reinforcement learning parameters
 control <- list(alpha = 0.1, gamma = 0.5, epsilon = 0.1)
 
@@ -141,7 +144,7 @@ plot(model_new)
 policy(model)
 names(model)
   
-# Reference to Nicolas Prˆllochs & Stefan Feuerriegel (2017)
+# Reference to Nicolas Pr√∂llochs & Stefan Feuerriegel (2017)
 
 #######################
 
@@ -152,14 +155,14 @@ library(MDPtoolbox)
 T <- array(0, c(2, 2, 2))
 T[,,1] <- matrix(c(0, 1, 0.8, 0.2), nrow=2, ncol=2, byrow=TRUE)
 T[,,2] <- matrix(c(0.5, 0.5, 0.1, 0.9), nrow=2, ncol=2, byrow=TRUE)
-# ? Dimensions are #states ◊ #states ◊ #actions
-# Create reward matrix (of dimensions #states ◊ #actions)
+# ? Dimensions are #states √ó #states √ó #actions
+# Create reward matrix (of dimensions #states √ó #actions)
 R <- matrix(c(10, 10, 1, -5), nrow=2, ncol=2, byrow=TRUE)
 #  Check whether the given T and R represent a well-defined MDP
 mdp_check(T, R)
 
 # Policy Iteration
-# Learning an agent traveling through a 2◊2 grid (i. e. 4 states)
+# Learning an agent traveling through a 2√ó2 grid (i. e. 4 states)
 # s3 (Goal) s0, s1,  s2
 # Wall (red line) prevents direct moves from s0 to s3
 # Reward favors shorter routes
