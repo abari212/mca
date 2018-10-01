@@ -1,6 +1,6 @@
 # cma Chapter 02
 
-# Parallel processing (locally)
+# Parallel processing (locally), which can be done also in a cluster
 library(doParallel)
 library(dplyr) # 
 # Calculate the number of cores available locally
@@ -27,8 +27,16 @@ foreach(i = 1:3, .combine=c, .packages="dplyr") %dopar% {
 }
 stopCluster(cl)
 
-# There is alos another parallel processing code using the foreach package:
+# There is also another parallel processing code using the foreach package:
 
+# to inslall foreach
+install.packages("foreach", repos="http://R-Forge.R-project.org")
+
+# to run foreach
+library(foreach)
+# To execute repeatedly a function (function) under foreach: 
+x <- foreach(i=1:length(x)) %do% function(i)
+####  
 library(doParallel)
 cl <- makeCluster(detectCores()-1)
 registerDoParallel(cl)
