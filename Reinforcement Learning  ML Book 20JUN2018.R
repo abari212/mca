@@ -4,13 +4,13 @@
 #######################
 
 # Reinforcement Learning - RL
-# Under RL algorithm, the machine is exposed to an environment (env_sa) where it trains itself based on trial and error as a result of the interation state/action. 
+# Under RL algorithm, the machine is exposed to a (dynamically changing) environment (env_sa) where it trains itself based on trial and error as a result of the interation state/action. 
 # RL learns by taking actions (a) under continuously changing states (s). It is trained to learn from past experience and tries to capture the best possible knowledge to make accurate decisions. 
 # Example of RL algorithms is Markov Decision Process (MDP). There is a package for applying MDP. Other algorithms and packages are also under development such as  the “ReinforcementLearning” package, which is intended to partially close this gap and offers the ability to perform model-free reinforcement learning in a highly customizable framework .
 
 # Installation or RL related platforms
 
-# Using the devtools package helps to easily install the latest development version of ReinforcementLearning as follows.
+# Using the "devtools" package helps to easily install the latest development version of ReinforcementLearning as follows:
 # Download and install latest version from GitHub
 # devtools::install_github("nproellochs/ReinforcementLearning")
 # Other option is install.packages("devtools")
@@ -21,7 +21,7 @@ library(ReinforcementLearning)
 # The following sections present the usage and main functionality of the ReinforcementLearning package.
 
 # Data format
-# The ReinforcementLearning package uses experience replay to learn an optimal policy based on past experience 
+# The "ReinforcementLearning" package uses experience replay to learn an optimal policy based on past experience, 
 # in the form of sample sequences consisting of states, actions and rewards. Here each training example consists of 
 # a state transition tuple (s,a,r,s_new), as described below.
 
@@ -120,7 +120,7 @@ policy(model)
 # Updating an existing policy
 # Specifying an environment function to model the dynamics of the environment helps to validate the performance of the agent. The validation procedure involves as per previous models to apply the learned policy to newly generated dataset. 
 
-The ReinforcementLearning package has additional predefined action selection mode, namely ‘epsilon-greedy’ to carry out the validation where the agent explores the environment by selecting an action at random with probability.
+# The "ReinforcementLearning" package has additional predefined action selection mode, namely ‘epsilon-greedy’ to carry out the validation where the agent explores the environment by selecting an action at random with probability.
 
 # The following example shows how to sample new experience from an existing policy using ‘epsilon-greedy’ action selection. The result is new state transition samples (‘data_new’) with significantly higher rewards compared to the original sample (‘sa_data’).
 # Define reinforcement learning parameters
@@ -164,10 +164,10 @@ mdp_check(T, R)
 # Policy Iteration
 # Learning an agent traveling through a 2×2 grid (i. e. 4 states)
 # s3 (Goal) s0, s1,  s2
-# Wall (red line) prevents direct moves from s0 to s3
-# Reward favors shorter routes
+# With a barrier (red line) preventing direct moves from s0 to s3
+# Reward favors shorter routes ("short cuts")
 # Visiting each square/state gives a reward of -1
-# Reaching the goal gives a reward of 10
+# Reaching the goal gives a higher reward of 10
 # Actions: move left, right, up or down
 # Transition probabilities are < 1
 # ? i. e. allows erroneous moves
