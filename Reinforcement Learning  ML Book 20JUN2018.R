@@ -166,7 +166,7 @@ mdp_check(T, R)
 # s3 (Goal) s0, s1,  s2
 # With a barrier (red line) preventing direct moves from s0 to s3
 # Reward favors shorter routes ("short cuts")
-# Visiting each square/state gives a reward of -1
+# Visiting each square/state gives a reward of -1 (rather a penalty)
 # Reaching the goal gives a higher reward of 10
 # Actions: move left, right, up or down
 # Transition probabilities are < 1
