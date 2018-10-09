@@ -1,6 +1,8 @@
 # cma Chapter 02
 
-# Parallel processing (locally), which can be done also in a cluster
+# Parallel processing CAN can be done,localy and also in a remote cluster
+# A cluster is a collection of nodes (servers) for storing and analyzing huge amounts of unstructured data in a more distributed computing environment.
+# Under such archtecture parallel processing helps to carry our distributed computing. 
 library(doParallel)
 library(dplyr) # 
 # Calculate the number of cores available locally
