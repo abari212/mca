@@ -1,7 +1,7 @@
 # mca
 Math Coding and Analytics (MCA)
 
-MCA is an innovative platform that aims to address Big Data challenges and issues in research and development (R&D) combining mathematics with coding and analytics. MCA also elaborates on conceptual frameworks to develop applications including tailored applications involving machine learning (ML) and artificial intelligence (AI) for rapid and timely actions
+MCA is an innovative platform that aims to address Big Data challenges and issues in research and development (R&D) combining mathematics with coding and analytics. MCA also elaborates on conceptual frameworks to develop theoretically-based applications including tailored  applications involving machine learning (ML) and artificial intelligence (AI) for rapid and timely actions
 
 MCA Mission Statement
 
