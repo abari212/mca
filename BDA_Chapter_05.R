@@ -1,7 +1,7 @@
 # This is linked to lecture 5 on Big Data 
 # It consits of different types of data (including sensor data), different types of ML and platforms (R and Spark) 
 # Starting by setting up first a working directory using setwd()
-setwd("C:/MCA2017") 
+setwd("D:/MyDir") 
 
 # Libraries to prepare and analyse data strating by dplyr comprehensive package 
 # dplyr libaray uses a number of useful resources for data cleaning and data manipulation.
@@ -175,7 +175,7 @@ normalize <- function(x) {
 # RStudio data viewer can be used to preview Spark DataFrames. The RStudio IDE features for sparklyr are available as part of the RStudio Preview Release.
 
 library(sparklyr)
-# You can execute arbitrary r code across your cluster using spark_apply. For example, we can apply rgamma over iris as follows:
+# You can execute arbitrary r code across your cluster using spark_apply. For example, you can apply rgamma over iris as follows:
   
   spark_apply(iris_data, function(data) {
     data[1:4] + rgamma(1,2)
