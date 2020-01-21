@@ -1,4 +1,4 @@
-# This is linked to lecture 5 on Big Data 
+# This example on this lecture is linked to lecture 5 on Big Data 
 # It consits of different types of data (including sensor data), different types of ML and platforms (R and Spark) 
 # Starting by setting up first a working directory using setwd()
 setwd("D:/MyDir") 
