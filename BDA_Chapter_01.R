@@ -1,9 +1,9 @@
-# This is part of a series of scripts to use R and Spark platforms combined to scale data processing and analytics 
-# Chapter 01 helps to get acquainted with R and Spark platforms (magic platform) 
-# Through the use case of extracting and transforming HTML data into a table or a data frame
-# Using as an example the stock market data - Apple stock market trends case 
-# Starting by Setting up the working platforms (R and Spark)
-# Start by installing R followed by R Studio
+# This is part of a series of scripts to use R and Spark platforms combined to scale data processing and analytics. 
+# Chapter 01 helps to get acquainted with R and Spark platforms, a magic platform. 
+# Through the use case of extracting and transforming HTML data into a table or a data frame.
+# Using as an example the stock market data - Apple stock market trends case. 
+# Starting by Setting up the working platforms (R and Spark).
+# Start by installing R followed by R Studio.
 
 # R is available to download and install and run on Windows, OS X and a wide variety of Unix platforms. 
 # The primary part of R language is available from its Comprehensive R Archive Network (CRAN). Many add-on packages used to extend the functionality of R language are also hosted in the CRAN.
